@@ -1,19 +1,33 @@
-// mailer.js - Resend API version (no SMTP)
-import { Resend } from "resend";
+import nodemailer from "nodemailer";
 
-let resendClient = null;
+let transporter = null;
 
-function getClient() {
-  if (!resendClient) {
-    const key = process.env.RESEND_API_KEY;
-    if (!key) throw new Error("Missing RESEND_API_KEY env variable");
-    resendClient = new Resend(key);
+function getTransporter() {
+  if (!transporter) {
+    const host = process.env.SMTP_HOST || "smtp.gmail.com";
+    const port = parseInt(process.env.SMTP_PORT || "587");
+    const user = process.env.SMTP_USER;
+    const pass = process.env.SMTP_PASS;
+    const secure = process.env.SMTP_SECURE === "true";
+
+    if (!user || !pass) {
+      console.warn("MAILER: Missing SMTP credentials (SMTP_USER/SMTP_PASS)");
+    }
+
+    transporter = nodemailer.createTransport({
+      host,
+      port,
+      secure, // true for 465, false for other ports
+      auth: {
+        user,
+        pass,
+      },
+    });
   }
-  return resendClient;
+  return transporter;
 }
 
 export async function sendMail({ to, subject, html, text }) {
-  // Behavior like old code
   const disabled = String(process.env.DISABLE_EMAIL || "false").toLowerCase() === "true";
 
   if (disabled) {
@@ -22,23 +36,20 @@ export async function sendMail({ to, subject, html, text }) {
   }
 
   const from = process.env.MAIL_FROM || "OrderByQR <no-reply@orderbyqr.in>";
-  const client = getClient();
+  const mailOptions = {
+    from,
+    to,
+    subject,
+    text,
+    html,
+  };
 
   try {
-    console.log(`MAIL(API) → Sending to ${to}, subject: ${subject}`);
-
-    const result = await client.emails.send({
-      from,
-      to,
-      subject,
-      html,
-      text,
-    });
-
-    console.log("MAIL(API) → Sent successfully:", result?.id);
-    return result;
+    const info = await getTransporter().sendMail(mailOptions);
+    console.log("MAIL(SMTP) → Sent successfully:", info.messageId);
+    return info;
   } catch (err) {
-    console.error("MAIL(API) error:", err?.message || err);
+    console.error("MAIL(SMTP) error:", err?.message || err);
     throw err;
   }
 }
