@@ -1,0 +1,121 @@
+/* From src/App.css — app-level design tokens and hero styles */
+:root{
+  --bg: #ffffff; /* page background set to white */
+  --card: #ffffff;
+  --muted: #6b7280; /* gray-500 */
+  --accent: #0ea5e9; /* sky-500 */
+  --success: #16a34a; /* green-600 */
+  --danger: #dc2626; /* red-600 */
+  --text: #0f172a; /* slate-900 */
+}
+
+/* Global layout */
+html,body,#root{
+  height:100%;
+  min-height:100%;
+  width:100%; /* ensure full-width root across all routes */
+}
+body{
+  margin:0;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  background-attachment: fixed; /* keep background steady when scrolling */
+}
+
+.container{
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+/* Hero */
+.hero{
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, #ffffff 0%, #f1f5f9 100%);
+  padding: 48px 16px;
+}
+.hero-inner{
+  text-align:center;
+  width: 100%;
+  max-width: 1100px;
+  background: var(--card);
+  padding: 36px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(15,23,42,0.06);
+}
+.hero-title{
+  font-size: 28px;
+  margin: 0 0 8px 0;
+  color: var(--text);
+}
+.hero-sub{
+  margin: 0 0 20px 0;
+  color: var(--muted);
+}
+.hero-actions{ display:flex; gap:12px; justify-content:center; }
+
+/* Buttons */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  padding:10px 16px;
+  border-radius:8px;
+  font-weight:600;
+  text-decoration:none;
+  border:1px solid transparent;
+  cursor:pointer;
+}
+.btn-primary{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  padding:10px 16px;
+  border-radius:8px;
+  font-weight:600;
+  text-decoration:none;
+  border:1px solid transparent;
+  cursor:pointer;
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(14,165,233,0.18);
+}
+.btn-primary:hover{ filter:brightness(0.97) }
+.btn-ghost{
+  background: transparent;
+  color: var(--text);
+  border: 1px solid rgba(15,23,42,0.12); /* slightly stronger for contrast */
+}
+
+/* Card and utility classes (used by other components) */
+.card{
+  background: var(--card);
+  border-radius: 10px;
+  padding: 16px;
+  box-shadow: 0 6px 18px rgba(15,23,42,0.04);
+}
+.muted{ color: var(--muted) }
+
+/* Accessibility helpers */
+.sr-only{ position:absolute; left:-10000px; top:auto; width:1px; height:1px; overflow:hidden }
+
+/* Keep existing small helpers for other components */
+.read-the-docs { color: var(--muted); }
+
+/* Premium unified page title color */
+.premium-title {
+  color: var(--color-primary,#D7263D);
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  font-family: 'Playfair Display','Cinzel','Cormorant Garamond',serif;
+}

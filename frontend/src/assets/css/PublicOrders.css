@@ -1,0 +1,46 @@
+.public-orders-page{max-width:1100px;margin:0 auto;padding:16px;min-height: 100dvh;}
+.public-orders-page .orders-title{margin:8px 0 12px}
+.public-orders-page .table-wrap{overflow-x:auto;margin-top:8px;border-radius:8px;}
+.public-orders-page .public-orders-table{width:100%;border-collapse:separate;border-spacing:0 8px}
+.public-orders-page .public-orders-table thead th{text-align:left;font-size:12px;color:#fffdfd;padding:8px 10px}
+.public-orders-page .public-orders-table tbody tr{background:#8a7f7f00;box-shadow:0 1px 6px rgba(192, 172, 172, 0.06)}
+.public-orders-page .public-orders-table td{padding:10px}
+.public-orders-page .order-items-list{margin:0;padding-left:18px}
+.public-orders-page .status-cell{text-transform:capitalize;font-weight:600}
+.public-orders-page .progress-wrap{width:180px;height:10px;border-radius:6px;background:#f1f5f9;overflow:hidden}
+.public-orders-page .progress-bar{height:100%;border-radius:6px;transition:width .6s ease, background .6s ease}
+.public-orders-page .eta-text{font-size:11px;color:#a5aab3;margin-top:4px}
+.public-orders-page .btn{border:1px solid #475569;padding:6px 10px;border-radius:8px;background:#ffffff;color:#111827;cursor:pointer}
+.public-orders-page .btn:hover{background:#f8fafc}
+.public-orders-page .btn-small{font-size:12px;padding:4px 8px}
+.public-orders-page .btn-danger{background:#b91c1c;color:#ffffff;border-color:#991b1b}
+.public-orders-page .btn-danger:hover{background:#7f1d1d}
+
+/* Cards layout for public orders */
+.orders-cards-grid{display:grid;grid-template-columns:1fr;gap:12px;margin-top:12px}
+@media (min-width: 640px){.orders-cards-grid{grid-template-columns:1fr}}
+.public-order-card{background:#1E1E1E;color:#F5F5F5;border:1px solid #8B0000;border-radius:14px;padding:14px;box-shadow:0 10px 25px rgba(139,0,0,0.18)}
+.public-order-card .card-header{display:flex;justify-content:space-between;align-items:center;gap:10px;border-bottom:1px solid rgba(245,245,245,0.08);padding-bottom:8px;margin-bottom:10px}
+.public-order-card .card-meta{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.public-order-card .order-id{font-weight:700}
+.public-order-card .header-right{display:flex;align-items:center;gap:8px}
+.status-pill{border-radius:999px;padding:4px 10px;font-weight:700;border:1px solid transparent;text-transform:capitalize}
+.status-pill.pending{background:#fef9c3;color:#713f12;border-color:#fde68a}
+.status-pill.accepted{background:#dcfce7;color:#065f46;border-color:#86efac}
+.status-pill.rejected,.status-pill.cancelled{background:#fee2e2;color:#7f1d1d;border-color:#fecaca}
+.public-order-card .card-items{display:flex;flex-wrap:wrap;gap:8px}
+.public-order-card .item-chip{background:#232323;border-radius:8px;padding:4px 8px;font-size:13px;color:#f3f4f6}
+.public-order-card .card-bottom{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:8px}
+.public-order-card .totals-block{min-width:120px;text-align:right}
+.public-order-card .total-label{font-size:12px;color:#cbd5e1}
+.public-order-card .total-value{font-size:16px;font-weight:700}
+.orders-badge{background:#dc2626;color:#fff;border-radius:999px;padding:2px 8px;font-size:12px;font-weight:700;line-height:1}
+.new-pill{background:#22c55e;color:#064e3b;border-radius:999px;padding:2px 8px;font-size:12px;font-weight:800;border:1px solid #86efac}
+.unread{outline:1px solid rgba(34,197,94,0.35)}
+@keyframes fadeOut{from{opacity:1}to{opacity:0}}
+.fade{animation:fadeOut 0.7s ease-in-out forwards}
+.orders-cards-scroll{overflow-y:auto;max-height:calc(100vh - 160px);padding-right:4px;padding-bottom:8px;scrollbar-gutter:stable}
+.orders-cards-scroll::-webkit-scrollbar{width:10px}
+.orders-cards-scroll::-webkit-scrollbar-track{background:#111827;border-radius:10px}
+.orders-cards-scroll::-webkit-scrollbar-thumb{background:#8B0000;border-radius:10px}
+.orders-cards-scroll::-webkit-scrollbar-thumb:hover{background:#a40f0f}

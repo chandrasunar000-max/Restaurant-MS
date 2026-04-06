@@ -1,0 +1,38 @@
+{
+  "features": [
+    { "title": "Smart QR Menus", "desc": "Update items and pricing instantly from any device.", "icon": "fa-qrcode" },
+    { "title": "Contactless Ordering", "desc": "Safer, faster, frictionless dine-in experience.", "icon": "fa-wifi" },
+    { "title": "Real-Time Analytics", "desc": "Actionable insights into sales & performance.", "icon": "fa-chart-line" }
+  ],
+  "steps": [
+    { "title": "Scan QR", "desc": "Guests scan a table-specific QR code." },
+    { "title": "Place Order", "desc": "They browse your live menu and submit orders." },
+    { "title": "Pay & Enjoy", "desc": "Integrated payment & faster service." }
+  ],
+  "pricing": {
+    "software": {
+      "title": "Simple Software Pricing",
+      "plans": [
+        {
+          "type": "Software Only (Monthly)",
+          "id": "software_monthly",
+          "price": "₹549/mo",
+          "features": ["Cloud-hosted software", "Standard support", "Automatic updates"],
+          "details": "Best for small cafes or single-location restaurants."
+        },
+        {
+          "type": "Software Only (Yearly)",
+          "id": "software_yearly",
+          "price": "₹5,499/yr",
+          "features": ["Cloud-hosted software", "Automatic updates", "Standard support", "Best value"],
+          "details": "Most popular choice for growing businesses."
+        }
+      ]
+    }
+  },
+  "testimonials": [
+    { "name": "Amelia R.", "role": "Fine Dining Owner", "quote": "OrderByQR has revolutionized our dine‑in experience!", "stars": 5 },
+    { "name": "Carlos M.", "role": "Cafe Manager", "quote": "Setup was effortless and customers love it.", "stars": 5 },
+    { "name": "Priya S.", "role": "Restaurant Chain Ops", "quote": "Scales perfectly across all our locations.", "stars": 5 }
+  ]
+}

@@ -1,0 +1,5 @@
+.auth-page{ padding: 2rem; font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; }
+.auth-page h2{ margin-top:0 }
+.auth-page form{ display:flex; flex-direction:column; gap:10px; max-width:420px }
+.auth-page input{ padding:8px 10px; border-radius:8px; border:1px solid #e6eef6 }
+.auth-page button{ padding:8px 10px; border-radius:8px; background: linear-gradient(90deg,#2563eb,#1d4ed8); color:#fff; border:none }

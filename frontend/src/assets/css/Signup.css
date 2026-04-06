@@ -1,0 +1,57 @@
+
+.signup-page{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:32px;
+  min-height: calc(100vh - 80px);
+  background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+}
+
+.signup-card{
+  width: 460px;
+  max-width: 92vw;
+  padding: 28px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(2,6,23,0.08);
+  background: var(--card, #fff);
+}
+
+.signup-title{
+  margin:0 0 6px 0;
+  font-size:20px;
+  color: var(--text, #0f172a);
+}
+.signup-sub{ margin:0 0 18px 0; }
+
+.signup-form{ display:flex; flex-direction:column; gap:12px; }
+.field{ display:flex; flex-direction:column; gap:6px; }
+.field-label{ font-size:13px; color:#374151; font-weight:600 }
+.field-input{
+  padding:10px 12px;
+  border-radius:8px;
+  border:1px solid #e6eef6;
+  background: #fff;
+  font-size:14px;
+  color: var(--text,#0f172a);
+}
+.field-input:focus{ outline:2px solid rgba(14,165,233,0.18); border-color:var(--accent,#0ea5e9); }
+
+.form-actions{ display:flex; justify-content:flex-end; margin-top:6px; }
+.form-message{ margin-top:12px; color:var(--muted,#374151); font-size:14px; }
+
+.signup-footer{ margin-top:14px; display:flex; gap:10px; align-items:center; justify-content:center; color: var(--muted,#6b7280) }
+.signup-footer .btn{ padding:8px 12px }
+
+/* two column helper for phone + pincode */
+.two-cols{ display:flex; gap:12px }
+.flex-1{ flex: 1 }
+.small-field{ width:120px }
+
+/* make form inputs accessible on small screens */
+@media (max-width:520px){
+  .signup-card{ padding:18px; }
+  .form-actions{ justify-content:center }
+  .two-cols{ flex-direction:column }
+  .small-field{ width:100% }
+}

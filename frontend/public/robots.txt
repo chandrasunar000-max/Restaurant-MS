@@ -1,0 +1,8 @@
+# robots.txt for OrderByQR
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /dashboard
+Disallow: /api/
+
+Sitemap: https://orderbyqr.com/sitemap.xml

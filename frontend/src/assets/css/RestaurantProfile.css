@@ -1,0 +1,119 @@
+/* Restaurant Profile styles */
+.profile-page{
+  padding: 16px;
+  color: #1f2937;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+}
+.profile-header .title{ margin:0 0 6px 0; font-size:1.8rem; letter-spacing:-0.2px; color: #111827; font-weight: 800; }
+.profile-header .subtitle{ margin:0; color:#6b7280; font-size: 1rem; }
+.profile-header .row{ display:flex; align-items:flex-end; justify-content:space-between; gap:12px; margin-bottom: 24px; }
+.profile-header .actions{ display:flex; gap:8px }
+.edit-actions{ display:flex; gap:8px }
+
+/* Tab Navigation Buttons */
+.profile-page nav .btn {
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.2s;
+  background: #f3f4f6;
+  color: #4b5563;
+  border: 1px solid #e5e7eb;
+}
+
+.profile-page nav .btn:hover {
+  background: #e5e7eb;
+  color: #1f2937;
+}
+
+.profile-page nav .btn.btn-primary {
+  background: #8b0000;
+  color: #ffffff;
+  border-color: #8b0000;
+}
+
+.profile-page nav .btn.btn-primary:hover {
+  background: #a50000;
+}
+
+.profile-card{
+  background: #1a1a1a;
+  color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+  border: 1px solid #333;
+  padding: 30px;
+  margin-top:20px;
+}
+
+.QR-card{
+  background: #1a1a1a;
+  color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+  border: 1px solid #333;
+  padding: 30px;
+  margin-top:20px;
+}
+
+.QR-card p{
+  color: #d1d5db;
+  margin-bottom: 20px;
+}
+
+.profile-top{ display:flex; align-items:center; gap:20px; margin-bottom:24px; padding-bottom: 20px; border-bottom: 1px solid #333; }
+.avatar-wrap{ width:80px; height:80px; border-radius:16px; overflow:hidden; background:#333; display:flex; align-items:center; justify-content:center; border: 2px solid #444; }
+.avatar-wrap img{ width:100%; height:100%; object-fit:cover; display:block }
+.avatar-placeholder{ font-weight:800; font-size:2rem; color:#ffffff }
+.id-line{ color:#07ff2c; font-size:0.9rem; font-family: monospace; }
+.profile-top div div:last-child { color: #9ca3af; font-size: 0.9rem; font-weight: 600; }
+
+.fields-grid{
+  display:grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap:20px;
+}
+.field{ display:flex; flex-direction:column; gap:8px }
+.field label{ font-weight:600; font-size:0.875rem; color:#9ca3af; text-transform: uppercase; letter-spacing: 0.025em; }
+.field input, .field textarea{
+  width:100%; box-sizing:border-box; border:1px solid #333; border-radius:10px; padding:12px; background:#2a2a2a; color:#ffffff; transition: border-color 0.2s;
+}
+.field input:focus, .field textarea:focus {
+  outline: none;
+  border-color: #8b0000;
+}
+.field input[readonly], .field textarea[readonly] {
+  background: #222;
+  color: #d1d5db;
+  cursor: not-allowed;
+  border-color: #333;
+}
+.field textarea{ min-height:100px; resize:vertical }
+.span-2{ grid-column: span 2 }
+
+.hint { color: #6b7280 !important; font-size: 0.75rem; margin-top: 4px; }
+.note{ margin-top:10px; color:#9ca3af; font-size:0.9rem; background: rgba(139, 0, 0, 0.1); padding: 12px; border-radius: 8px; border: 1px solid rgba(139, 0, 0, 0.2); }
+.msg.success{ margin:16px 0; background: rgba(16,185,129,0.1); color:#34d399; padding:12px 16px; border-radius:10px; border:1px solid rgba(16,185,129,0.2); font-weight: 500; }
+.msg.error{ margin:16px 0; background: rgba(239,68,68,0.1); color:#f87171; padding:12px 16px; border-radius:10px; border:1px solid rgba(239,68,68,0.2); font-weight: 500; }
+
+.loading { color: #8b0000; text-align: center; padding: 40px; font-weight: 600; font-size: 1.2rem; }
+
+/* Admin messaging */
+.admin-note{ margin: 16px 0 24px; background: rgba(251, 191, 36, 0.1); border:1px solid rgba(251, 191, 36, 0.2); color:#fbbf24; border-radius:12px; padding:16px }
+.admin-note-text{ margin-top:4px }
+.admin-messages{ margin-top:20px; background:#1a1a1a; border:1px solid #333; border-radius:16px; padding:20px }
+.admin-msg-title{ margin:0 0 16px; font-size:1.1rem; color: #ffffff; font-weight: 700; }
+.btn-danger{ background: #dc2626; color: #fff; border: 1px solid #dc2626; padding: 8px 16px; border-radius: 8px; font-weight: 600; }
+.btn-danger:hover{ background: #b91c1c; }
+.admin-msg-list{ list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:12px }
+.admin-msg{ background:#222; border:1px solid #333; border-radius:12px; padding:16px }
+.admin-msg-meta{ color:#6b7280; font-size:0.8rem; margin-bottom:6px }
+.admin-msg-text{ color:#e5e7eb }
+
+@media (max-width:640px){
+  .fields-grid{ grid-template-columns: 1fr }
+  .span-2{ grid-column: span 1 }
+  .profile-header .row { flex-direction: column; align-items: flex-start; }
+  .profile-header .actions { margin-top: 12px; }
+}
+
