@@ -25,7 +25,7 @@ const Icons = {
 };
 
 // Get backend URL from environment variables
-const BACKEND_URL = import.meta.env.BACKEND_URL || "https://orderbyqr-production.up.railway.app/" || "";
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "";
 const inputBaseClass = "w-full rounded-md border border-gray-300 bg-gray-50 p-2.5 text-sm font-medium text-gray-900 placeholder-gray-400 focus:border-red-600 focus:ring-1 focus:ring-red-600 focus:outline-none transition-all";
 const labelClass = "block mb-1.5 text-xs font-bold uppercase tracking-wide text-gray-500";
 
