@@ -31,15 +31,16 @@ const restaurantSchema = new mongoose.Schema({
   password: { type: String, required: true },
   // postal / area code
   pincode: { type: String },
-  // merchant UPI ID (optional, validated when present)
-  upiId: {
+  // merchant eSewa ID (optional, validated when present)
+  esewaId: {
     type: String,
     validate: {
       validator: function (v) {
         if (!v) return true;
-        return /^[a-zA-Z0-9._-]+@[a-zA-Z0-9]+$/.test(v);
+        // eSewa ID is typically a 10-digit mobile number or an email
+        return /^(\d{10}|[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/.test(v);
       },
-      message: 'UPI ID must contain @ symbol (e.g. username@bank or 1234567890@ybl)'
+      message: 'eSewa ID must be a 10-digit mobile number or a valid email address'
     }
   },
   // single software plan (no subscription management)

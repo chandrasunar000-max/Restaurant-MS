@@ -33,13 +33,9 @@ export function buildInvoiceHTMLClient(order = {}, rest = {}, isSession = false,
     const headerName = (rest?.name || 'RESTAURANT').toUpperCase();
     const created = new Date(order.createdAt || Date.now()).toLocaleString('en-IN', { hour12: true });
 
-    const upiId = rest?.upiId || '';
-    const payee = rest?.name || 'Merchant';
-    const note = `Order ${order.orderId || order._id}`;
-    const amountParam = isFinite(Number(order.total || 0)) ? `&am=${Number(order.total || 0).toFixed(2)}` : '';
-    const upiUrl = upiId ? `upi://pay?pa=${encodeURIComponent(upiId)}&pn=${encodeURIComponent(payee)}${amountParam}&cu=INR&tn=${encodeURIComponent(note)}` : '';
+    const esewaId = rest?.esewaId || '';
     // Prefer provided inline data URL (generated client-side) to avoid network dependency and speed up printing.
-    const qrImg = qrDataUrl || (upiId ? `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(upiUrl)}` : '');
+    const qrImg = qrDataUrl || (esewaId ? `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(esewaId)}` : '');
     //customer bill
     return `<!doctype html>
 <html>
@@ -82,11 +78,11 @@ export function buildInvoiceHTMLClient(order = {}, rest = {}, isSession = false,
   <div class="hr"></div>
   <div class="row"><strong>GRAND TOTAL</strong><strong>${currency(grandTotal)}</strong></div>
 
-  ${upiId ? `
+  ${esewaId ? `
     <div style="margin-top:8px;text-align:center">
-      <div style="font-size:11px;margin-bottom:6px">Scan & Pay</div>
+      <div style="font-size:11px;margin-bottom:6px">Scan & Pay (eSewa)</div>
       <img src="${qrImg}" style="width:120px;height:120px;display:block;margin:0 auto" />
-      <div style="font-size:10px;margin-top:4px">UPI ID: ${escapeHtml(upiId)}</div>
+      <div style="font-size:10px;margin-top:4px">eSewa ID: ${escapeHtml(esewaId)}</div>
     </div>
   ` : ''}
 
@@ -108,12 +104,8 @@ export function buildInvoiceHTMLAndroid(order = {}, rest = {}, isSession = false
     const headerName = (rest?.name || 'RESTAURANT').toUpperCase();
     const created = new Date(order.createdAt || Date.now()).toLocaleString('en-IN', { hour12: true });
 
-    const upiId = rest?.upiId || '';
-    const payee = rest?.name || 'Merchant';
-    const note = `Order ${order.orderId || order._id}`;
-    const amountParam = isFinite(Number(order.total || 0)) ? `&am=${Number(order.total || 0).toFixed(2)}` : '';
-    const upiUrl = upiId ? `upi://pay?pa=${encodeURIComponent(upiId)}&pn=${encodeURIComponent(payee)}${amountParam}&cu=INR&tn=${encodeURIComponent(note)}` : '';
-    const qrImg = qrDataUrl || (upiId ? `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(upiUrl)}` : '');
+    const esewaId = rest?.esewaId || '';
+    const qrImg = qrDataUrl || (esewaId ? `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(esewaId)}` : '');
     
     return `<!doctype html>
 <html>
@@ -162,7 +154,7 @@ export function buildInvoiceHTMLAndroid(order = {}, rest = {}, isSession = false
   .qr-section { text-align: center; margin-top: 3mm; margin-bottom: 2mm; }
   .qr-label { font-size: 9pt; margin-bottom: 2mm; }
   .qr-image { max-width: 70mm; height: auto; display: block; margin: 0 auto; }
-  .upi-id { font-size: 8pt; margin-top: 2mm; }
+  .esewa-id { font-size: 8pt; margin-top: 2mm; }
   .footer { text-align: center; margin-top: 3mm; font-size: 9pt; }
   @media screen {
     body { background: #f5f5f5; }
@@ -219,11 +211,11 @@ export function buildInvoiceHTMLAndroid(order = {}, rest = {}, isSession = false
     </tbody>
   </table>
 
-  ${upiId ? `
+  ${esewaId ? `
     <div class="qr-section">
-      <div class="qr-label">Scan & Pay</div>
-      <img src="${qrImg}" class="qr-image" alt="UPI QR Code" />
-      <div class="upi-id">UPI ID: ${escapeHtml(upiId)}</div>
+      <div class="qr-label">Scan & Pay (eSewa)</div>
+      <img src="${qrImg}" class="qr-image" alt="eSewa QR Code" />
+      <div class="esewa-id">eSewa ID: ${escapeHtml(esewaId)}</div>
     </div>
   ` : ''}
 

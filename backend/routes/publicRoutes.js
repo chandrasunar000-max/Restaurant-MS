@@ -51,7 +51,7 @@ router.get("/restaurant/:restaurantId", async (req, res) => {
     if (!mongoose.Types.ObjectId.isValid(restaurantId)) {
       return res.status(400).json({ message: "Invalid restaurant id" });
     }
-    const r = await Restaurant.findById(restaurantId).select("name branch plan upiId address pincode phone username image");
+    const r = await Restaurant.findById(restaurantId).select("name branch plan esewaId address pincode phone username image");
     if (!r) return res.status(404).json({ message: "Restaurant not found" });
     return res.json(r);
   } catch (err) {
@@ -64,7 +64,7 @@ router.get("/restaurant/:restaurantId", async (req, res) => {
 router.get("/restaurant/by-username/:username", async (req, res) => {
   try {
     const { username } = req.params;
-    const r = await Restaurant.findOne({ username }).select("name branch plan upiId address pincode phone totalTables username");
+    const r = await Restaurant.findOne({ username }).select("name branch plan esewaId address pincode phone totalTables username");
     if (!r) {
       return res.status(404).json({ message: "Restaurant not found" });
     }

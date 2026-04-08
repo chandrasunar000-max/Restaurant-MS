@@ -27,7 +27,7 @@ The project aims to modernize the traditional restaurant ordering process. By le
 - **Lucide React**: Beautifully simple icons.
 
 ## Working
-1. **Restaurant Onboarding**: Restaurant owners sign up, verify their email via OTP, and set up their profile, including their logo and UPI ID for payments.
+1. **Restaurant Onboarding**: Restaurant owners sign up, verify their email via OTP, and set up their profile, including their logo and eSewa ID for payments.
 2. **Menu Management**: Owners can create, edit, and categorize menu items with different sizes, spice levels, and dietary types.
 3. **QR Generation**: The system generates unique QR codes for each table or room in the restaurant.
 4. **Customer Experience**:

@@ -6,7 +6,7 @@ import { debounce } from "lodash";
 
 function Signup() {
   const navigate = useNavigate();
-  const [form, setForm] = useState({ name: "", address: "", phone: "", branch: "", email: "", password: "", confirmPassword: "", pincode: "", image: "", totalTables: "1", totalRooms: "0", upiId: "", type: "restaurant", username: "" });
+  const [form, setForm] = useState({ name: "", address: "", phone: "", branch: "", email: "", password: "", confirmPassword: "", pincode: "", image: "", totalTables: "1", totalRooms: "0", esewaId: "", type: "restaurant", username: "" });
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
@@ -46,7 +46,7 @@ function Signup() {
   };
 
   const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}$/;
-  const upiRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9]+$/; // UPI ID with @ symbol
+  const esewaRegex = /^(\d{10}|[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/; // eSewa ID (phone or email)
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -65,9 +65,9 @@ function Signup() {
     if ((form.password || '') !== (form.confirmPassword || '')) {
       newErrors.confirmPassword = 'Passwords do not match.';
     }
-    // Optional UPI ID validation if provided
-    if (form.upiId && !upiRegex.test(form.upiId.trim())) {
-      newErrors.upiId = 'UPI ID must contain @ symbol (e.g. username@bank or 1234567890@ybl).';
+    // Optional eSewa ID validation if provided
+    if (form.esewaId && !esewaRegex.test(form.esewaId.trim())) {
+      newErrors.esewaId = 'eSewa ID must be a 10-digit mobile number or a valid email address.';
     }
 
     if (Object.keys(newErrors).length) {
@@ -170,9 +170,9 @@ function Signup() {
               <input className="field-input" name="phone" placeholder="Phone number" onChange={handleChange} required />
             </label>
             <label className="field">
-              <span className="field-label">Payment UPI ID (optional)</span>
-              <input className="field-input" name="upiId" placeholder="username@bank or 1234567890@ybl" onChange={handleChange} />
-              {errors.upiId && <small className="error" style={{color:'#dc2626'}}>{errors.upiId}</small>}
+              <span className="field-label">Payment eSewa ID (optional)</span>
+              <input className="field-input" name="esewaId" placeholder="eSewa ID (mobile or email)" onChange={handleChange} />
+              {errors.esewaId && <small className="error" style={{color:'#dc2626'}}>{errors.esewaId}</small>}
             </label>
             <label className="field">
               <span className="field-label">Pincode</span>

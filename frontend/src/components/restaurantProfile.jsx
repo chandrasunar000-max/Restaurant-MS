@@ -5,8 +5,8 @@ import QRCodesForTables from "./QRCodesForTables";
 import QRCodesForRooms from "./QRCodesForRooms";
 
 export default function RestaurantProfile() {
-	const [profile, setProfile] = useState({ _id: "", name: "", branch: "", address: "", pincode: "", image: "", plan: "free", totalTables: 1, totalRooms: 0, upiId: "", geofenceEnabled: false, geofenceRadiusMeters: 0 });
-	const [form, setForm] = useState({ name: "", branch: "", address: "", pincode: "", image: "", totalTables: 1, totalRooms: 0, upiId: "", geofenceEnabled: false, geofenceRadiusMeters: 0 });
+	const [profile, setProfile] = useState({ _id: "", name: "", branch: "", address: "", pincode: "", image: "", plan: "free", totalTables: 1, totalRooms: 0, esewaId: "", geofenceEnabled: false, geofenceRadiusMeters: 0 });
+	const [form, setForm] = useState({ name: "", branch: "", address: "", pincode: "", image: "", totalTables: 1, totalRooms: 0, esewaId: "", geofenceEnabled: false, geofenceRadiusMeters: 0 });
 	const [loading, setLoading] = useState(true);
 	const [saving, setSaving] = useState(false);
 	const [error, setError] = useState("");
@@ -54,7 +54,7 @@ export default function RestaurantProfile() {
 				image: data.image || "",
 				totalTables: data.totalTables ?? 1,
 				totalRooms: data.totalRooms ?? 0,
-				upiId: data.upiId || "",
+				esewaId: data.esewaId || "",
 				geofenceEnabled: !!data.geofenceEnabled,
 				geofenceRadiusMeters: Number(data.geofenceRadiusMeters) || 0,
 			});
@@ -86,7 +86,7 @@ export default function RestaurantProfile() {
 			image: profile.image || "",
 			totalTables: profile.totalTables ?? 1,
 			totalRooms: profile.totalRooms ?? 0,
-			upiId: profile.upiId || "",
+			esewaId: profile.esewaId || "",
 			geofenceEnabled: !!profile.geofenceEnabled,
 			geofenceRadiusMeters: Number(profile.geofenceRadiusMeters) || 0,
 		});
@@ -255,8 +255,8 @@ export default function RestaurantProfile() {
 									)}
 								</div>
 								<div className="field span-2">
-									<label>Payment UPI ID (optional)</label>
-									<input value={isEditing ? form.upiId : (profile.upiId || '')} onChange={(e) => setForm({ ...form, upiId: e.target.value })} readOnly={!isEditing} placeholder="username@bank or 1234567890@ybl" />
+									<label>Payment eSewa ID (optional)</label>
+									<input value={isEditing ? form.esewaId : (profile.esewaId || '')} onChange={(e) => setForm({ ...form, esewaId: e.target.value })} readOnly={!isEditing} placeholder="eSewa ID (mobile or email)" />
 									<small style={{ color: '#999' }} className="hint">Used for payment QR codes in customer invoices</small>
 								</div>
 

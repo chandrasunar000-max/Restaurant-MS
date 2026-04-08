@@ -92,7 +92,7 @@ export const sendContactEmail = async (req, res) => {
 
 export const registerRestaurant = async (req, res) => {
   try {
-    const { name, email, password, address, phone, branch, pincode, totalTables, totalRooms, upiId, type, username } = req.body;
+    const { name, email, password, address, phone, branch, pincode, totalTables, totalRooms, esewaId, type, username } = req.body;
 
     let imagePath = "";
     if (req.file) {
@@ -119,7 +119,7 @@ export const registerRestaurant = async (req, res) => {
       image: imagePath, 
       totalTables: totalTables ?? 1, 
       totalRooms: totalRooms ?? 0, 
-      upiId, 
+      esewaId, 
       isVerified: false, 
       type, 
       username 
@@ -216,7 +216,7 @@ const getMe = async (req, res) => {
     image: r.image || "",
     totalTables: typeof r.totalTables === 'number' ? r.totalTables : 1,
     totalRooms: r.totalRooms,
-    upiId: r.upiId || "",
+    esewaId: r.esewaId || "",
     plan: r.plan || "software",
     type: r.type || "restaurant",
     // msg: msg,
@@ -228,7 +228,7 @@ const getMe = async (req, res) => {
 // PUT /api/restaurants/me — update allowed profile fields
 export const updateMe = async (req, res) => {
   try {
-    const allowed = ["name", "address", "branch", "pincode", "image", "totalTables", "geofenceEnabled", "geofenceRadiusMeters", "upiId", "totalRooms"]; // email is read-only; phone conditionally allowed
+    const allowed = ["name", "address", "branch", "pincode", "image", "totalTables", "geofenceEnabled", "geofenceRadiusMeters", "esewaId", "totalRooms"]; // email is read-only; phone conditionally allowed
     const updates = {};
     for (const key of allowed) {
       if (Object.prototype.hasOwnProperty.call(req.body, key)) {
@@ -305,7 +305,7 @@ export const updateMe = async (req, res) => {
       image: updated.image || "",
       totalTables: typeof updated.totalTables === 'number' ? updated.totalTables : 1,
       totalRooms: updated.totalRooms,
-      upiId: updated.upiId || "",
+      esewaId: updated.esewaId || "",
       plan: updated.plan || "software",
       type: updated.type || "restaurant",
       geofenceEnabled: !!updated.geofenceEnabled,

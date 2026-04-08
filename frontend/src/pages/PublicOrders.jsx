@@ -519,13 +519,9 @@ const discountAmount = Math.max(subTotal - grandTotal, 0);
       itemLines = items.map(itemLineRenderer).join("\n");
   }
 
-  const upiId = restaurant?.upiId || "";
-  const payee = restaurant?.name || "Merchant";
-  const note = `Order ${order.orderId || order._id}`;
-  const amountParam = isFinite(Number(grandTotal)) ? `&am=${Number(grandTotal).toFixed(2)}` : "";
-  const upiUrl = `upi://pay?pa=${encodeURIComponent(upiId)}&pn=${encodeURIComponent(payee)}${amountParam}&cu=INR&tn=${encodeURIComponent(note)}`;
-  const qrImg = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(upiUrl)}`;
-  const showUpiQr = !!upiId;
+  const esewaId = restaurant?.esewaId || "";
+  const qrImg = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(esewaId)}`;
+  const showEsewaQr = !!esewaId;
 
   const tableNo = order.tableNumber ?? order.table ?? "—";
   const restaurantName = (restaurant?.name || "INVOICE").toUpperCase();
@@ -590,10 +586,10 @@ ${LINE(SEP)}
 </div>
 
 
-  ${showUpiQr ? `
+  ${showEsewaQr ? `
     <div class="hr"></div>
     <div class="center">
-      <div style="font-size:11px; margin-bottom:4px;">Scan to Pay</div>
+      <div style="font-size:11px; margin-bottom:4px;">Scan to Pay (eSewa)</div>
       <img src="${qrImg}" alt="QR" width="120" height="120" style="display:block; margin:0 auto;" />
     </div>` : ''}
 

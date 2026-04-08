@@ -186,13 +186,9 @@ export default function RecentOrdersCards() {
 
       // Try to generate QR inline (data URL) to avoid slow remote QR server; fall back if generation fails.
       let qrDataUrl = '';
-      if (rest?.upiId) {
+      if (rest?.esewaId) {
         try {
-          const payee = rest?.name || 'Merchant';
-          const note = `Order ${order.orderId || order._id}`;
-          const amountParam = isFinite(Number(order.total || 0)) ? `&am=${Number(order.total || 0).toFixed(2)}` : '';
-          const upiUrl = `upi://pay?pa=${encodeURIComponent(rest.upiId)}&pn=${encodeURIComponent(payee)}${amountParam}&cu=INR&tn=${encodeURIComponent(note)}`;
-          qrDataUrl = await QRCode.toDataURL(upiUrl, { width: 300, margin: 0 });
+          qrDataUrl = await QRCode.toDataURL(rest.esewaId, { width: 300, margin: 0 });
         } catch (e) {
           qrDataUrl = '';
         }
@@ -251,13 +247,9 @@ export default function RecentOrdersCards() {
       const rest = restaurant || {};
       // Generate QR inline for combined invoice if possible to avoid remote QR delay
       let qrDataUrl = '';
-      if (rest?.upiId) {
+      if (rest?.esewaId) {
         try {
-          const payee = rest?.name || 'Merchant';
-          const note = `Order ${combinedOrder.orderId || combinedOrder._id}`;
-          const amountParam = isFinite(Number(combinedOrder.total || 0)) ? `&am=${Number(combinedOrder.total || 0).toFixed(2)}` : '';
-          const upiUrl = `upi://pay?pa=${encodeURIComponent(rest.upiId)}&pn=${encodeURIComponent(payee)}${amountParam}&cu=INR&tn=${encodeURIComponent(note)}`;
-          qrDataUrl = await QRCode.toDataURL(upiUrl, { width: 300, margin: 0 });
+          qrDataUrl = await QRCode.toDataURL(rest.esewaId, { width: 300, margin: 0 });
         } catch (e) { qrDataUrl = ''; }
       }
       const html = type === 'kitchen' ? buildKitchenHTMLClient(combinedOrder, rest) : buildInvoiceHTMLClient(combinedOrder, rest, true, qrDataUrl);

@@ -465,14 +465,10 @@ export function buildInvoiceHTML(order, restaurant, isSession = false) {
   const pin = restaurant?.pincode ? `\n${restaurant.pincode}` : "";
   const phone = restaurant?.phone ? `\n${restaurant.phone}` : "";
 
-  // Build UPI payment QR using restaurant's UPI ID
-  const upiId = restaurant?.upiId || "";
-  const payee = restaurant?.name || "Merchant";
-  const note = `Order${isSession ? 's' : ''} ${order.orderId || order._id}`;
-  const amountParam = isFinite(Number(grandTotal)) ? `&am=${Number(grandTotal).toFixed(2)}` : "";
-  const upiUrl = `upi://pay?pa=${encodeURIComponent(upiId)}&pn=${encodeURIComponent(payee)}${amountParam}&cu=INR&tn=${encodeURIComponent(note)}`;
-  const qrImg = `https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${encodeURIComponent(upiUrl)}`;
-  const showUpiQr = !!upiId;
+  // Build eSewa payment QR using restaurant's eSewa ID
+  const esewaId = restaurant?.esewaId || "";
+  const qrImg = `https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${encodeURIComponent(esewaId)}`;
+  const showEsewaQr = !!esewaId;
 
   const restaurantDetails = [restaurant?.branch, restaurant?.address, restaurant?.pincode, restaurant?.phone].filter(x => x).join(", ");
   const customerName = order.customerName || "—";
@@ -541,13 +537,13 @@ ${LINE(SEP)}
 ${LINE(pad("SUBTOTAL", NAME_W + SIZE_W + QTY_W + PRICE_W + 3) + padLeft(currency(baseSubtotal), TOTAL_W))}
 ${LINE(pad("TOTAL", NAME_W + SIZE_W + QTY_W + PRICE_W + 3) + padLeft(currency(grandTotal), TOTAL_W))}
         </pre>
-        ${showUpiQr 
+        ${showEsewaQr 
           ? `<div class="center" style="margin-top:8px">
-              <div class="label" style="font-weight:600; margin-bottom:4px;">Scan to pay (UPI)</div>
-              <img src="${qrImg}" alt="UPI QR" width="150" height="150" />
-              <div class="label" style="margin-top:4px;">${escapeHtml(upiId)}</div>
+              <div class="label" style="font-weight:600; margin-bottom:4px;">Scan to pay (eSewa)</div>
+              <img src="${qrImg}" alt="eSewa QR" width="150" height="150" />
+              <div class="label" style="margin-top:4px;">${escapeHtml(esewaId)}</div>
             </div>`
-          : '<div class="center label" style="margin-top:8px; color:#999;">UPI payment not configured</div>'}
+          : '<div class="center label" style="margin-top:8px; color:#999;">eSewa payment not configured</div>'}
         <div class="center label" style="margin-top:8px; font-size:10px;">Thank you for your order!</div>
         <button onclick="window.print()">PRINT INVOICE</button>
       </div>
