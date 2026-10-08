@@ -1,0 +1,159 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="980" viewBox="0 0 1600 980" role="img" aria-labelledby="title desc">
+  <title id="title">Restaurant Management System Use Case Diagram</title>
+  <desc id="desc">UML use case diagram showing Customer, Restaurant Owner Staff, and System Admin actors with core use cases of the restaurant management system.</desc>
+  <defs>
+    <style>
+      .bg { fill: #f6f1e8; }
+      .boundary { fill: #fffdf8; stroke: #2f2a25; stroke-width: 3; rx: 18; ry: 18; }
+      .title { font: 700 28px 'Segoe UI', Arial, sans-serif; fill: #201b17; }
+      .label { font: 600 18px 'Segoe UI', Arial, sans-serif; fill: #201b17; }
+      .small { font: 500 16px 'Segoe UI', Arial, sans-serif; fill: #201b17; }
+      .actor-line { stroke: #2f2a25; stroke-width: 3; fill: none; stroke-linecap: round; }
+      .usecase { fill: #fff; stroke: #7a1f1f; stroke-width: 3; }
+      .link { stroke: #4c433c; stroke-width: 2.2; fill: none; }
+      .include { stroke: #6a625c; stroke-width: 2; fill: none; stroke-dasharray: 8 8; }
+      .stereotype { font: italic 15px 'Segoe UI', Arial, sans-serif; fill: #4c433c; }
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#6a625c"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1600" height="980"/>
+
+  <text class="title" x="800" y="52" text-anchor="middle">Restaurant Management System - UML Use Case Diagram</text>
+
+  <rect class="boundary" x="300" y="90" width="1000" height="830"/>
+  <text class="title" x="800" y="128" text-anchor="middle">System Boundary</text>
+
+  <!-- Left actor: Restaurant Owner / Staff -->
+  <circle class="actor-line" cx="120" cy="190" r="28"/>
+  <line class="actor-line" x1="120" y1="218" x2="120" y2="290"/>
+  <line class="actor-line" x1="80" y1="245" x2="160" y2="245"/>
+  <line class="actor-line" x1="120" y1="290" x2="90" y2="340"/>
+  <line class="actor-line" x1="120" y1="290" x2="150" y2="340"/>
+  <text class="label" x="120" y="375" text-anchor="middle">Restaurant</text>
+  <text class="label" x="120" y="398" text-anchor="middle">Owner / Staff</text>
+
+  <!-- Left actor: Customer -->
+  <circle class="actor-line" cx="120" cy="620" r="28"/>
+  <line class="actor-line" x1="120" y1="648" x2="120" y2="720"/>
+  <line class="actor-line" x1="80" y1="675" x2="160" y2="675"/>
+  <line class="actor-line" x1="120" y1="720" x2="90" y2="770"/>
+  <line class="actor-line" x1="120" y1="720" x2="150" y2="770"/>
+  <text class="label" x="120" y="808" text-anchor="middle">Customer</text>
+
+  <!-- Right actor: System Admin -->
+  <circle class="actor-line" cx="1460" cy="320" r="28"/>
+  <line class="actor-line" x1="1460" y1="348" x2="1460" y2="420"/>
+  <line class="actor-line" x1="1420" y1="375" x2="1500" y2="375"/>
+  <line class="actor-line" x1="1460" y1="420" x2="1430" y2="470"/>
+  <line class="actor-line" x1="1460" y1="420" x2="1490" y2="470"/>
+  <text class="label" x="1460" y="505" text-anchor="middle">System Admin</text>
+
+  <!-- Staff use cases -->
+  <ellipse class="usecase" cx="520" cy="190" rx="120" ry="40"/>
+  <text class="small" x="520" y="196" text-anchor="middle">Sign Up</text>
+
+  <ellipse class="usecase" cx="800" cy="190" rx="125" ry="40"/>
+  <text class="small" x="800" y="196" text-anchor="middle">Verify OTP</text>
+
+  <ellipse class="usecase" cx="1080" cy="190" rx="120" ry="40"/>
+  <text class="small" x="1080" y="196" text-anchor="middle">Login</text>
+
+  <ellipse class="usecase" cx="520" cy="290" rx="135" ry="40"/>
+  <text class="small" x="520" y="296" text-anchor="middle">Reset Password</text>
+
+  <ellipse class="usecase" cx="800" cy="290" rx="145" ry="40"/>
+  <text class="small" x="800" y="296" text-anchor="middle">Manage Profile</text>
+
+  <ellipse class="usecase" cx="1080" cy="290" rx="135" ry="40"/>
+  <text class="small" x="1080" y="296" text-anchor="middle">Manage Menu</text>
+
+  <ellipse class="usecase" cx="520" cy="390" rx="145" ry="40"/>
+  <text class="small" x="520" y="396" text-anchor="middle">Generate QR Codes</text>
+
+  <ellipse class="usecase" cx="800" cy="390" rx="130" ry="40"/>
+  <text class="small" x="800" y="396" text-anchor="middle">View Orders</text>
+
+  <ellipse class="usecase" cx="1080" cy="390" rx="160" ry="40"/>
+  <text class="small" x="1080" y="396" text-anchor="middle">Update Order Status</text>
+
+  <ellipse class="usecase" cx="520" cy="490" rx="145" ry="40"/>
+  <text class="small" x="520" y="496" text-anchor="middle">Edit / Move Orders</text>
+
+  <ellipse class="usecase" cx="800" cy="490" rx="130" ry="40"/>
+  <text class="small" x="800" y="496" text-anchor="middle">Mark Order Paid</text>
+
+  <ellipse class="usecase" cx="1080" cy="490" rx="125" ry="40"/>
+  <text class="small" x="1080" y="496" text-anchor="middle">Export Orders</text>
+
+  <ellipse class="usecase" cx="800" cy="590" rx="140" ry="40"/>
+  <text class="small" x="800" y="596" text-anchor="middle">View Analytics</text>
+
+  <!-- Customer use cases -->
+  <ellipse class="usecase" cx="520" cy="690" rx="130" ry="40"/>
+  <text class="small" x="520" y="696" text-anchor="middle">Scan QR Code</text>
+
+  <ellipse class="usecase" cx="800" cy="690" rx="145" ry="40"/>
+  <text class="small" x="800" y="696" text-anchor="middle">View Public Menu</text>
+
+  <ellipse class="usecase" cx="1080" cy="690" rx="160" ry="40"/>
+  <text class="small" x="1080" y="696" text-anchor="middle">Search / Filter Menu</text>
+
+  <ellipse class="usecase" cx="520" cy="790" rx="145" ry="40"/>
+  <text class="small" x="520" y="796" text-anchor="middle">Add Items to Cart</text>
+
+  <ellipse class="usecase" cx="800" cy="790" rx="120" ry="40"/>
+  <text class="small" x="800" y="796" text-anchor="middle">Place Order</text>
+
+  <ellipse class="usecase" cx="1080" cy="790" rx="145" ry="40"/>
+  <text class="small" x="1080" y="796" text-anchor="middle">Track Order Status</text>
+
+  <ellipse class="usecase" cx="520" cy="875" rx="140" ry="32"/>
+  <text class="small" x="520" y="881" text-anchor="middle">View Recent Orders</text>
+
+  <ellipse class="usecase" cx="800" cy="875" rx="155" ry="32"/>
+  <text class="small" x="800" y="881" text-anchor="middle">Cancel Pending Order</text>
+
+  <!-- Admin use case -->
+  <ellipse class="usecase" cx="1200" cy="320" rx="145" ry="40"/>
+  <text class="small" x="1200" y="315" text-anchor="middle">Maintain OTP /</text>
+  <text class="small" x="1200" y="336" text-anchor="middle">Email Service</text>
+
+  <!-- Actor links -->
+  <line class="link" x1="148" y1="190" x2="400" y2="190"/>
+  <line class="link" x1="150" y1="210" x2="675" y2="190"/>
+  <line class="link" x1="150" y1="230" x2="960" y2="190"/>
+  <line class="link" x1="150" y1="250" x2="385" y2="290"/>
+  <line class="link" x1="150" y1="268" x2="655" y2="290"/>
+  <line class="link" x1="150" y1="286" x2="945" y2="290"/>
+  <line class="link" x1="150" y1="304" x2="375" y2="390"/>
+  <line class="link" x1="150" y1="322" x2="670" y2="390"/>
+  <line class="link" x1="150" y1="338" x2="920" y2="390"/>
+  <line class="link" x1="150" y1="350" x2="385" y2="490"/>
+  <line class="link" x1="150" y1="360" x2="670" y2="490"/>
+  <line class="link" x1="150" y1="370" x2="955" y2="490"/>
+  <line class="link" x1="150" y1="380" x2="660" y2="590"/>
+
+  <line class="link" x1="148" y1="620" x2="390" y2="690"/>
+  <line class="link" x1="148" y1="640" x2="655" y2="690"/>
+  <line class="link" x1="148" y1="660" x2="920" y2="690"/>
+  <line class="link" x1="148" y1="680" x2="385" y2="790"/>
+  <line class="link" x1="148" y1="700" x2="680" y2="790"/>
+  <line class="link" x1="148" y1="720" x2="935" y2="790"/>
+  <line class="link" x1="148" y1="738" x2="385" y2="875"/>
+  <line class="link" x1="148" y1="756" x2="645" y2="875"/>
+
+  <line class="link" x1="1432" y1="320" x2="1345" y2="320"/>
+
+  <!-- Include relationships -->
+  <line class="include" x1="760" y1="765" x2="585" y2="726" marker-end="url(#arrow)"/>
+  <text class="stereotype" x="662" y="736" text-anchor="middle">&lt;&lt;include&gt;&gt;</text>
+
+  <line class="include" x1="805" y1="750" x2="805" y2="730" marker-end="url(#arrow)"/>
+  <text class="stereotype" x="865" y="742">&lt;&lt;include&gt;&gt;</text>
+
+  <line class="include" x1="1000" y1="816" x2="606" y2="862" marker-end="url(#arrow)"/>
+  <text class="stereotype" x="800" y="850" text-anchor="middle">&lt;&lt;include&gt;&gt;</text>
+</svg>
